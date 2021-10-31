@@ -15,10 +15,10 @@ RUN yum install -y rsync && \
 ADD docker-entrypoint.sh /
 ADD nginx/ /usr/local/nginx/
 COPY --from=builder ${GET_BUILDER_DIR}/target/${SERVERNAME}.jar /${SERVERNAME}/
-WORKDIR /
+WORKDIR /om-server
 RUN chmod +x /docker-entrypoint.sh /bin/rsync /usr/local/nginx/sbin/nginx /${SERVERNAME}/${SERVERNAME}.jar
 COPY om-server.conf /om-server/om-server.conf
 HEALTHCHECK --interval=30s --timeout=3s \
   CMD curl -f http://localhost:19011/ || exit 1
 EXPOSE 19011 80 443
-ENTRYPOINT ["/om-server/om-server.jar"] 
+ENTRYPOINT ["./om-server.jar"] 
