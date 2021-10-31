@@ -1,7 +1,7 @@
 app:
   env: prod
   dcenter: 1
-  dtask: dtask
+  dtask: omdtask
 
 logging:
   config: classpath:log4j2-prod.xml
