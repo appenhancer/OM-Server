@@ -1,5 +1,5 @@
 FROM adtiming/ombuilder as builder
-ARG BUILDER_URL="https://github.com/AdTiming/OM-Server.git"
+ARG BUILDER_URL="https://github.com/appenhancer/OM-Server.git"
 ARG BUILDER_DIR="OM-Server"
 RUN git clone ${BUILDER_URL} && \
     cd ${BUILDER_DIR} && \
@@ -20,5 +20,4 @@ RUN chmod +x /docker-entrypoint.sh /bin/rsync /usr/local/nginx/sbin/nginx /${SER
 HEALTHCHECK --interval=30s --timeout=3s \
   CMD curl -f http://localhost:19011/ || exit 1
 EXPOSE 19011 80 443
-ENTRYPOINT ["/docker-entrypoint.sh"] 
-CMD ["om-server"]
+ENTRYPOINT ["/om-server/om-server.jar"] 

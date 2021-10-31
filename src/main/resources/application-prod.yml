@@ -1,7 +1,7 @@
 app:
   env: prod
   dcenter: 1
-  dtask: replace_to_dtask_host
+  dtask: dtask
 
 logging:
   config: classpath:log4j2-prod.xml
